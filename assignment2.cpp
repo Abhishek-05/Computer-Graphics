@@ -32,6 +32,7 @@ glm::mat4 modelview_matrix;
 GLuint uModelViewMatrix;
 int num_vertices = 360*6*2;
 float sq_side=5.5;
+float zoom=1.0;
 //###############################################################################
 glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
 glm::vec3 toyColor(1.0f, 0.5f, 0.31f);
@@ -519,73 +520,73 @@ void initBuffersGL(void)
 ///////////   BOX  | ////////
 ///////////   BOX  | ////////
 ///////////   BOX  V ////////
-  // setColor(blue);
-  // rr = thick_rect(NULL,sq_side,sq_side,.4);
-  // rr->change_parameters(0,0,0,0,-0,0);
+  setColor(blue);
+  rr = thick_rect(NULL,sq_side*zoom,sq_side*zoom,.4*zoom);
+  rr->change_parameters(0,0,0,0,-0,0);
 
-  // setColor(red);
-  // rr2 = square(rr,sq_side);
-  // rr2->change_parameters(0,0,0,0,0,90);
+  setColor(red);
+  rr2 = square(rr,sq_side*zoom);
+  rr2->change_parameters(0,0,0,0,0,90);
 
-  // setColor(green);
-  // rr3 = square(rr,sq_side);
-  // rr3->change_parameters(0,0,0,0,0,-90);
+  setColor(green);
+  rr3 = square(rr,sq_side*zoom);
+  rr3->change_parameters(0,0,0,0,0,-90);
 
-  // setColor(cement);
-  // rr4 = square(rr,sq_side);
-  // rr4->change_parameters(0,0,0,90,0,0);
+  setColor(lavendar);
+  rr4 = square(rr,sq_side*zoom);
+  rr4->change_parameters(0,0,0,90,0,0);
 
-  // setColor(black);
-  // rr5 = square(rr,sq_side);
-  // rr5->change_parameters(0,0,0,-90,0,0);
+  setColor(black);
+  rr5 = square(rr,sq_side*zoom);
+  rr5->change_parameters(0,0,0,-90,0,0);
 
-  // setColor(skin);
-  // rr6 = square(rr,sq_side);
-  // rr6->change_parameters(0,2*sq_side,0,0,0,0);
-
-  setColor(brown);
-  table = thick_rect(NULL,3.5,1,0.2);
-  table->change_parameters(0,3,-1,0,0,0);
+  setColor(skin);
+  rr6 = square(rr,sq_side*zoom);
+  rr6->change_parameters(0,2*sq_side*zoom,0,0,0,0);
 
   setColor(brown);
-  leg1 = thick_rect(table,.1,.1,2.6);
-  leg1->change_parameters(3.3,-2.5,.85,0,0,0);
+  table = thick_rect(NULL,3.5*zoom,1*zoom,0.2*zoom);
+  table->change_parameters(0,3*zoom,-1*zoom,0,0,0);
 
   setColor(brown);
-  leg2 = thick_rect(table,.1,.1,2.6);
-  leg2->change_parameters(3.3,-2.5,-.85,0,0,0);
+  leg1 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
+  leg1->change_parameters(3.3*zoom,-2.5*zoom,.85*zoom,0,0,0);
 
   setColor(brown);
-  leg3 = thick_rect(table,.1,.1,2.6);
-  leg3->change_parameters(-3.3,-2.5,.85,0,0,0);
+  leg2 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
+  leg2->change_parameters(3.3*zoom,-2.5*zoom,-.85*zoom,0,0,0);
 
   setColor(brown);
-  leg4 = thick_rect(table,.1,.1,2.6);
-  leg4->change_parameters(-3.3,-2.5,-.85,0,0,0);
+  leg3 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
+  leg3->change_parameters(-3.3*zoom,-2.5*zoom,.85*zoom,0,0,0);
+
+  setColor(brown);
+  leg4 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
+  leg4->change_parameters(-3.3*zoom,-2.5*zoom,-.85*zoom,0,0,0);
 //////////chair
   setColor(cement);
-  ch_seat = thick_rect(table,.6,.6,0.3);
-  ch_seat->change_parameters(0,-.7,-01,0,0,0);
+  ch_seat = thick_rect(table,.6*zoom,.6*zoom,0.3*zoom);
+  ch_seat->change_parameters(0,-.7*zoom,-01*zoom,0,0,0);
 
   setColor(cement);
-  ch_back = thick_rect(ch_seat,.6,1,0.3);
-  ch_back->change_parameters(0,-3.15,4.5,75,0,0);
+  ch_back = thick_rect(ch_seat,.6*zoom,1*zoom,0.3*zoom);
+  ch_back->change_parameters(0,-0.9*zoom,1.8*zoom,75,0,0);
 
   setColor(cement);
-  ch_leg1 = thick_rect(ch_seat,.1,.1,1.7);
-  ch_leg1->change_parameters(.5,-1.7,.5,0,0,0);
+  ch_leg1 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
+  ch_leg1->change_parameters(.5*zoom,-1.7*zoom,.5*zoom,0,0,0);
 
   setColor(cement);
-  ch_leg2 = thick_rect(ch_seat,.1,.1,1.7);
-  ch_leg2->change_parameters(.5,-1.7,-.5,0,0,0);
+  ch_leg2 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
+  ch_leg2->change_parameters(.5*zoom,-1.7*zoom,-.5*zoom,0,0,0);
 
   setColor(cement);
-  ch_leg3 = thick_rect(ch_seat,.1,.1,1.7);
-  ch_leg3->change_parameters(-.5,-1.7,.5,0,0,0);
+  ch_leg3 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
+  ch_leg3->change_parameters(-.5*zoom,-1.7*zoom,.5*zoom,0,0,0);
 
   setColor(cement);
-  ch_leg4 = thick_rect(ch_seat,.1,.1,1.7);
-  ch_leg4->change_parameters(-.5,-1.7,-.5,0,0,0);
+  ch_leg4 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
+  ch_leg4->change_parameters(-.5*zoom,-1.7*zoom,-.5*zoom,0,0,0);
 
 
   root_node = curr_node = table;//by default rotate node 
@@ -623,7 +624,7 @@ void renderGL(void)
 
   // hip->render_tree();
   // c2_hip->render_tree();
-  //rr->render_tree();
+  rr->render_tree();
   table->render_tree();
 
 }
