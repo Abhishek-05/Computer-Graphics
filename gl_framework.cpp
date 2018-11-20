@@ -2,6 +2,7 @@
 #include "hierarchy_node.hpp"
 
 extern GLfloat c_xrot,c_yrot,c_zrot;
+extern GLfloat c_xpos,c_ypos,c_zpos;
 extern bool enable_perspective;
 extern csX75::HNode* node1, *node2, *node3,*curr_node, *hip, *abdomen, *thigh1, *leg1,*thigh2, *leg2, *arm1,*arm2, *head,
                       * forearm1, * forearm2, * c2_forearm1, * c2_forearm2,
@@ -131,10 +132,6 @@ namespace csX75
     //!Close the window if the ESC key was pressed
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
       glfwSetWindowShouldClose(window, GL_TRUE);
-    else if (key == GLFW_KEY_Z  && action == GLFW_PRESS)
-     {c1=true; c2=false; b=false;curr_node = hip;present_bit=0;} 
-    else if (key == GLFW_KEY_X  && action == GLFW_PRESS)
-      {c1=false; c2=true; b=false;curr_node = c2_hip;present_bit=0;}
     else if (key == GLFW_KEY_C  && action == GLFW_PRESS)
       {c1=false; c2=false; b=true;curr_node = rr;present_bit=0;}
     else if (key == GLFW_KEY_1 && action == GLFW_PRESS)
@@ -304,17 +301,19 @@ namespace csX75
     else if (key == GLFW_KEY_P && action == GLFW_PRESS)
       enable_perspective = !enable_perspective;   
     else if (key == GLFW_KEY_A  && action == GLFW_PRESS)
-      c_yrot -= 1.0;
+      c_ypos -= 0.7;
     else if (key == GLFW_KEY_D  && action == GLFW_PRESS)
-      c_yrot += 1.0;
+      c_ypos += 0.7;
     else if (key == GLFW_KEY_W  && action == GLFW_PRESS)
-      c_xrot -= 1.0;
+      c_xpos -= 0.7;
     else if (key == GLFW_KEY_S  && action == GLFW_PRESS)
-      c_xrot += 1.0;        
+      c_xpos += 0.7;        
     else if (key == GLFW_KEY_Q  && action == GLFW_PRESS)
-      c_zrot -= 1.0;
+      c_zpos -= 0.7;
     else if (key == GLFW_KEY_E  && action == GLFW_PRESS)
-      c_zrot += 1.0;   
+      c_zpos += 0.7;
+    else if (key == GLFW_KEY_E  && action == GLFW_PRESS)
+      c_zpos += 0.7;   
   }
 };  
   

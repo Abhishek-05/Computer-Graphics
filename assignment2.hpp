@@ -32,7 +32,7 @@ GLfloat xpos=0.0,ypos=0.0,zpos=0.0;
 // Rotation Parameters
 GLfloat xrot=0.0,yrot=0.0,zrot=0.0;*/
 // Camera position and rotation Parameters
-GLfloat c_xpos = 0.0, c_ypos = 0.0, c_zpos = 2.0;
+GLfloat c_xpos = 0.0, c_ypos = 0.0, c_zpos = 10.0;
 GLfloat c_up_x = 0.0, c_up_y = 1.0, c_up_z = 0.0;
 GLfloat c_xrot=0.0,c_yrot=0.0,c_zrot=0.0;
 
@@ -41,7 +41,7 @@ bool enable_culling=true;
 //Running variable to toggle wireframe/solid modelling
 bool solid=true;
 //Enable/Disable perspective view
-bool enable_perspective=false;
+bool enable_perspective=true;
 //Shader program attribs
 GLuint vPosition,vColor;
 
@@ -80,9 +80,9 @@ csX75::HNode* shoulder2;
 csX75::HNode* thigh1;
 csX75::HNode* thigh2;
 
-//leg
-csX75::HNode* leg1;
-csX75::HNode* leg2;
+// //leg
+// csX75::HNode* leg1;
+// csX75::HNode* leg2;
 
 //shoes
 csX75::HNode* shoe1;
@@ -173,6 +173,20 @@ csX75::HNode* rr3;
 csX75::HNode* rr4;
 csX75::HNode* rr5;
 csX75::HNode* rr6;
+
+//table & chair
+csX75::HNode* table;
+csX75::HNode* leg1;
+csX75::HNode* leg2;
+csX75::HNode* leg3;
+csX75::HNode* leg4;
+
+csX75::HNode* ch_seat;
+csX75::HNode* ch_back;
+csX75::HNode* ch_leg1;
+csX75::HNode* ch_leg2;
+csX75::HNode* ch_leg3;
+csX75::HNode* ch_leg4;
 
 
 
