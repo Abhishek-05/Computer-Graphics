@@ -84,6 +84,8 @@ glm::vec4 lavendar_lite(1.0, 0.82, 0.95, 1.0);
 glm::vec4 cement(0.376, 0.376, 0.34, 1.0);
 glm::vec4 chair(0.1274, 0.1321, 0.14, 1.0);
 glm::vec4 dark_skin(.537, .38, 0.153, 1.0);
+glm::vec4 lemon(.749, 1, 0, 1.0);
+glm::vec4 bed(.635, .4156, .2588, 1.0);
 
 
 void setColor(glm::vec4 c)
@@ -520,76 +522,91 @@ void initBuffersGL(void)
 ///////////   BOX  | ////////
 ///////////   BOX  | ////////
 ///////////   BOX  V ////////
-  setColor(blue);
-  rr = thick_rect(NULL,sq_side*zoom,sq_side*zoom,.4*zoom);
-  rr->change_parameters(0,0,0,0,-0,0);
+//   setColor(blue);
+//   rr = thick_rect(NULL,sq_side*zoom,sq_side*zoom,.4*zoom);
+//   rr->change_parameters(0,0,0,0,-0,0);
 
-  setColor(red);
-  rr2 = square(rr,sq_side*zoom);
-  rr2->change_parameters(0,0,0,0,0,90);
+//   setColor(red);
+//   rr2 = square(rr,sq_side*zoom);
+//   rr2->change_parameters(0,0,0,0,0,90);
 
-  setColor(green);
-  rr3 = square(rr,sq_side*zoom);
-  rr3->change_parameters(0,0,0,0,0,-90);
+//   setColor(green);
+//   rr3 = square(rr,sq_side*zoom);
+//   rr3->change_parameters(0,0,0,0,0,-90);
 
-  setColor(lavendar);
-  rr4 = square(rr,sq_side*zoom);
-  rr4->change_parameters(0,0,0,90,0,0);
+//   setColor(lavendar);
+//   rr4 = square(rr,sq_side*zoom);
+//   rr4->change_parameters(0,0,0,90,0,0);
 
-  setColor(black);
-  rr5 = square(rr,sq_side*zoom);
-  rr5->change_parameters(0,0,0,-90,0,0);
+//   setColor(black);
+//   rr5 = square(rr,sq_side*zoom);
+//   rr5->change_parameters(0,0,0,-90,0,0);
 
-  setColor(skin);
-  rr6 = square(rr,sq_side*zoom);
-  rr6->change_parameters(0,2*sq_side*zoom,0,0,0,0);
+//   setColor(skin);
+//   rr6 = square(rr,sq_side*zoom);
+//   rr6->change_parameters(0,2*sq_side*zoom,0,0,0,0);
 
-  setColor(brown);
-  table = thick_rect(NULL,3.5*zoom,1*zoom,0.2*zoom);
-  table->change_parameters(0,3*zoom,-1*zoom,0,0,0);
+//   setColor(brown);
+//   table = thick_rect(rr,3.5*zoom,1*zoom,0.2*zoom);
+//   table->change_parameters(0,3*zoom,-1*zoom,0,0,0);
 
-  setColor(brown);
-  leg1 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
-  leg1->change_parameters(3.3*zoom,-2.5*zoom,.85*zoom,0,0,0);
+//   setColor(brown);
+//   leg1 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
+//   leg1->change_parameters(3.3*zoom,-2.5*zoom,.85*zoom,0,0,0);
 
-  setColor(brown);
-  leg2 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
-  leg2->change_parameters(3.3*zoom,-2.5*zoom,-.85*zoom,0,0,0);
+//   setColor(brown);
+//   leg2 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
+//   leg2->change_parameters(3.3*zoom,-2.5*zoom,-.85*zoom,0,0,0);
 
-  setColor(brown);
-  leg3 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
-  leg3->change_parameters(-3.3*zoom,-2.5*zoom,.85*zoom,0,0,0);
+//   setColor(brown);
+//   leg3 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
+//   leg3->change_parameters(-3.3*zoom,-2.5*zoom,.85*zoom,0,0,0);
 
-  setColor(brown);
-  leg4 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
-  leg4->change_parameters(-3.3*zoom,-2.5*zoom,-.85*zoom,0,0,0);
-//////////chair
-  setColor(cement);
-  ch_seat = thick_rect(table,.6*zoom,.6*zoom,0.3*zoom);
-  ch_seat->change_parameters(0,-.7*zoom,-01*zoom,0,0,0);
+//   setColor(brown);
+//   leg4 = thick_rect(table,.1*zoom,.1*zoom,2.6*zoom);
+//   leg4->change_parameters(-3.3*zoom,-2.5*zoom,-.85*zoom,0,0,0);
+// //////////chair
+//   setColor(cement);
+//   ch_seat = thick_rect(table,.6*zoom,.6*zoom,0.3*zoom);
+//   ch_seat->change_parameters(0,-.7*zoom,-01*zoom,0,0,0);
 
-  setColor(cement);
-  ch_back = thick_rect(ch_seat,.6*zoom,1*zoom,0.3*zoom);
-  ch_back->change_parameters(0,-0.9*zoom,1.8*zoom,75,0,0);
+//   // setColor(cement);
+//   // ch_back = thick_rect(ch_seat,.6*zoom,1*zoom,0.3*zoom);
+//   // ch_back->change_parameters(0,-0.9*zoom,1.8*zoom,75,0,0);
 
-  setColor(cement);
-  ch_leg1 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
-  ch_leg1->change_parameters(.5*zoom,-1.7*zoom,.5*zoom,0,0,0);
+//   setColor(cement);
+//   ch_leg1 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
+//   ch_leg1->change_parameters(.5*zoom,-1.7*zoom,.5*zoom,0,0,0);
 
-  setColor(cement);
-  ch_leg2 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
-  ch_leg2->change_parameters(.5*zoom,-1.7*zoom,-.5*zoom,0,0,0);
+//   setColor(cement);
+//   ch_leg2 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
+//   ch_leg2->change_parameters(.5*zoom,-1.7*zoom,-.5*zoom,0,0,0);
 
-  setColor(cement);
-  ch_leg3 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
-  ch_leg3->change_parameters(-.5*zoom,-1.7*zoom,.5*zoom,0,0,0);
+//   setColor(cement);
+//   ch_leg3 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
+//   ch_leg3->change_parameters(-.5*zoom,-1.7*zoom,.5*zoom,0,0,0);
 
-  setColor(cement);
-  ch_leg4 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
-  ch_leg4->change_parameters(-.5*zoom,-1.7*zoom,-.5*zoom,0,0,0);
+//   setColor(cement);
+//   ch_leg4 = thick_rect(ch_seat,.1*zoom,.1*zoom,1.7*zoom);
+//   ch_leg4->change_parameters(-.5*zoom,-1.7*zoom,-.5*zoom,0,0,0);
+// ////////bed
+//   setColor(bed);
+//   bed_bottom = thick_rect(rr,4.6,1.5,1.3);
+//   bed_bottom->change_parameters(0,.4,2.75,0,0,0);
 
+//   setColor(bed);
+//   bed_head = thick_rect(bed_bottom,.4,1.5,4);
+//   bed_head->change_parameters(5.0,0,-0,0,0,0);
 
-  root_node = curr_node = table;//by default rotate node 
+//   setColor(lemon);
+//   bed_sheet = thick_rect(bed_bottom,4.55,1.4,1.3);
+//   bed_sheet->change_parameters(0,1.32,-0,0,0,0);
+
+////lamp
+  setColor(bed);
+  bed_bottom = thick_rect(rr,4.6,1.5,1.3);
+  bed_bottom->change_parameters(0,.4,2.75,0,0,0);
+  root_node = curr_node = rr;
 
 }
 
@@ -625,7 +642,7 @@ void renderGL(void)
   // hip->render_tree();
   // c2_hip->render_tree();
   rr->render_tree();
-  table->render_tree();
+  //table->render_tree();
 
 }
 

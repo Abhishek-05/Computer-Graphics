@@ -188,6 +188,12 @@ csX75::HNode* ch_leg2;
 csX75::HNode* ch_leg3;
 csX75::HNode* ch_leg4;
 
+///bed
+csX75::HNode* bed_head;
+csX75::HNode* bed_bottom;
+csX75::HNode* bed_sheet;
+
+
 
 
 
