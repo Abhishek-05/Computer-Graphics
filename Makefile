@@ -1,6 +1,6 @@
 CC=g++
 
-OPENGLLIB= -framework OpenGL
+OPENGLLIB= -lGL
 GLEWLIB= -lGLEW
 GLFWLIB = -lglfw
 LIBS=$(OPENGLLIB) $(GLEWLIB) $(GLFWLIB)
