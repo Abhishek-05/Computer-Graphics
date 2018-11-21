@@ -3,7 +3,7 @@
 
 extern GLfloat c_xpos,c_ypos,c_zpos;
 extern bool enable_perspective;
-extern csX75::HNode* node1, *node2, *node3,*curr_node;
+extern csX75::HNode* node1, *node2, *node3,*rr ,*curr_node,*box_top, *base,*head,*lhand,*rhand,*chest,*lshoulder,*rshoulder,*lforehand,*rforehand,*lthigh,*rthigh,*lcalf,*rcalf;
 namespace csX75
 {
   //! Initialize GL State
@@ -38,12 +38,33 @@ namespace csX75
     //!Close the window if the ESC key was pressed
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
       glfwSetWindowShouldClose(window, GL_TRUE);
+    else if (key == GLFW_KEY_O && action == GLFW_PRESS)
+      curr_node = rr;
+    else if (key == GLFW_KEY_B && action == GLFW_PRESS)
+      curr_node = box_top;
     else if (key == GLFW_KEY_1 && action == GLFW_PRESS)
-      curr_node = node1;  
+      curr_node = base;
     else if (key == GLFW_KEY_2 && action == GLFW_PRESS)
-      curr_node = node2; 
+      curr_node = chest;
     else if (key == GLFW_KEY_3 && action == GLFW_PRESS)
-      curr_node = node3; 
+      curr_node = lcalf;
+    else if (key == GLFW_KEY_4 && action == GLFW_PRESS)
+      curr_node = rcalf;
+    else if (key == GLFW_KEY_5 && action == GLFW_PRESS)
+      curr_node = lforehand;
+    else if (key == GLFW_KEY_6 && action == GLFW_PRESS)
+      curr_node = rforehand;
+    else if (key == GLFW_KEY_7 && action == GLFW_PRESS)
+      curr_node = lhand;
+    else if (key == GLFW_KEY_8 && action == GLFW_PRESS)
+      curr_node = rhand;
+    else if (key == GLFW_KEY_9 && action == GLFW_PRESS)
+      curr_node = lthigh;
+    else if (key == GLFW_KEY_0 && action == GLFW_PRESS)
+      curr_node = rthigh;
+    else if (key == GLFW_KEY_H && action == GLFW_PRESS)
+      curr_node = head;
+
     else if (key == GLFW_KEY_LEFT && action == GLFW_PRESS)
       curr_node->dec_ry();
     else if (key == GLFW_KEY_RIGHT && action == GLFW_PRESS)
@@ -59,17 +80,17 @@ namespace csX75
     else if (key == GLFW_KEY_P && action == GLFW_PRESS)
       enable_perspective = !enable_perspective;   
     else if (key == GLFW_KEY_A  && action == GLFW_PRESS)
-      c_ypos -= 1;
+      c_ypos -= .7;
     else if (key == GLFW_KEY_D  && action == GLFW_PRESS)
-      c_ypos += 1;
+      c_ypos += .7;
     else if (key == GLFW_KEY_W  && action == GLFW_PRESS)
-      c_xpos -= 1;
+      c_xpos -= .7;
     else if (key == GLFW_KEY_S  && action == GLFW_PRESS)
-      c_xpos += 1;        
+      c_xpos += .7;        
     else if (key == GLFW_KEY_Q  && action == GLFW_PRESS)
-      c_zpos -= 1;
+      c_zpos -= .7;
     else if (key == GLFW_KEY_E  && action == GLFW_PRESS)
-      c_zpos += 1;   
+      c_zpos += .7;   
   }
 };  
   

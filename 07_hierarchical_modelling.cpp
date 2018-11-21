@@ -176,6 +176,39 @@ csX75::HNode * thick_rect(csX75::HNode * parent,size_t img_choice,float sq_side1
   csX75::HNode * nodenode = new csX75::HNode(parent,img_choice,num_vertices,v_positions,v_normals,tex_coords,sizeof(v_positions),sizeof(v_normals),sizeof(tex_coords));
   return nodenode;
 }
+
+csX75::HNode * new_cuboid(csX75::HNode * parent,size_t img_choice,float sq_side1,float sq_side2,float thick, float xx,float yy,float zz){
+  positions[0] = glm::vec4(+xx,           yy,          sq_side2+zz, 1.0);//1
+  positions[1] = glm::vec4(+xx,           yy + thick,  sq_side2+zz, 1.0);//2
+  positions[2] = glm::vec4(2*sq_side1+xx, yy + thick,  sq_side2+zz, 1.0);//3
+  positions[3] = glm::vec4(2*sq_side1+xx, yy,          sq_side2+zz, 1.0);//4
+  positions[4] = glm::vec4(xx,            yy,          -sq_side2+zz, 1.0);//5
+  positions[5] = glm::vec4(xx,            yy + thick,  -sq_side2+zz, 1.0);//6
+  positions[6] = glm::vec4(2*sq_side1+xx, yy + thick,  -sq_side2+zz, 1.0);//7
+  positions[7] = glm::vec4(2*sq_side1+xx, yy,          -sq_side2+zz, 1.0);//8
+
+  colorcube();
+  csX75::HNode * nodenode = new csX75::HNode(parent,img_choice,num_vertices,v_positions,v_normals,tex_coords,sizeof(v_positions),sizeof(v_normals),sizeof(tex_coords));
+  //nodenode->change_parameters(xx,yy,zz,0,0,0);
+  return nodenode;
+}
+
+csX75::HNode * forrobo(csX75::HNode * parent,size_t img_choice,float x_value,float y_value,float z_val, float xx,float yy,float zz){
+  positions[0] = glm::vec4(xx - x_value/2, yy,            zz + z_val/2, 1.0);//1
+  positions[1] = glm::vec4(xx - x_value/2, yy + y_value,  zz + z_val/2, 1.0);//2
+  positions[2] = glm::vec4(xx + x_value/2, yy + y_value,  zz + z_val/2, 1.0);//3
+  positions[3] = glm::vec4(xx + x_value/2, yy,            zz + z_val/2, 1.0);//4
+  positions[4] = glm::vec4(xx - x_value/2, yy,            zz - z_val/2, 1.0);//5
+  positions[5] = glm::vec4(xx - x_value/2, yy + y_value,  zz - z_val/2, 1.0);//6
+  positions[6] = glm::vec4(xx + x_value/2, yy + y_value,  zz - z_val/2, 1.0);//7
+  positions[7] = glm::vec4(xx + x_value/2, yy,            zz - z_val/2, 1.0);//8
+
+  colorcube();
+  csX75::HNode * nodenode = new csX75::HNode(parent,img_choice,num_vertices,v_positions,v_normals,tex_coords,sizeof(v_positions),sizeof(v_normals),sizeof(tex_coords));
+  //nodenode->change_parameters(xx,yy,zz,0,0,0);
+  return nodenode;
+}
+
 //-----------------------------------------------------------------
 
 void initBuffersGL(void)
@@ -201,54 +234,54 @@ void initBuffersGL(void)
   normalMatrix =  glGetUniformLocation( shaderProgram, "normalMatrix");
   viewMatrix = glGetUniformLocation( shaderProgram, "viewMatrix");
 
-  rr = thick_rect(NULL,5,sq_side*zoom,sq_side*zoom,.000*zoom);
+  rr = thick_rect(NULL,5,sq_side*zoom,sq_side*zoom,.001*zoom);
   rr->change_parameters(0,0,0,0,0,0);
 
-  rr2 = thick_rect(rr,10,sq_side*zoom,sq_side*zoom*2/3,.000*zoom);
-  rr2->change_parameters(0,0,-02.8,0,0,90);
+  rr2 = thick_rect(rr,10,sq_side*zoom,sq_side*zoom*2/3,.001*zoom);
+  rr2->change_parameters(0,0,-3,0,0,90);
 
-  rr2_1 = thick_rect(rr2,10,sq_side*zoom,sq_side*zoom/4.8,.000*zoom);
+  rr2_1 = thick_rect(rr2,10,sq_side*zoom,sq_side*zoom/4.8,.001*zoom);
   rr2_1->change_parameters(0,0,9.3,0,0,-0);
 
-  rr2_2 = thick_rect(rr2_1,10,sq_side*zoom/1.3,sq_side*zoom/4.8,.000*zoom);
+  rr2_2 = thick_rect(rr2_1,10,sq_side*zoom/1.3,sq_side*zoom/4.8,.001*zoom);
   rr2_2->change_parameters(-6.4,0,-6,0,90,-0);
 
-  rr2_3 = thick_rect(rr2_1,10,sq_side*zoom/1.3,sq_side*zoom/4.8,.000*zoom);
+  rr2_3 = thick_rect(rr2_1,10,sq_side*zoom/1.3,sq_side*zoom/4.8,.001*zoom);
   rr2_3->change_parameters(-0,0,-6,0,90,-0);
 
-  rr2_4 = thick_rect(rr2_1,10,sq_side*zoom/1.3,sq_side*zoom/4.8,.000*zoom);
+  rr2_4 = thick_rect(rr2_1,10,sq_side*zoom/1.3,sq_side*zoom/4.8,.001*zoom);
   rr2_4->change_parameters(-3,0,-6,0,90,-0);
 
-  rr2_6 = thick_rect(rr2_1,10,sq_side*zoom/1.3,sq_side*zoom/4.8,.000*zoom);
+  rr2_6 = thick_rect(rr2_1,10,sq_side*zoom/1.3,sq_side*zoom/4.8,.001*zoom);
   rr2_6->change_parameters(06.4,0,-6,0,90,-0);
 
-  rr3 = thick_rect(rr,10,sq_side*zoom,sq_side*zoom*2/3,.000*zoom);
+  rr3 = thick_rect(rr,10,sq_side*zoom,sq_side*zoom*2/3,.001*zoom);
   rr3->change_parameters(0,0,-2.8,0,0,-90);
 
-  rr3_1 = thick_rect(rr3,10,sq_side*zoom,sq_side*zoom/4.8,.000*zoom);
+  rr3_1 = thick_rect(rr3,10,sq_side*zoom,sq_side*zoom/4.8,.001*zoom);
   rr3_1->change_parameters(0,0,9.3,0,0,-0);
 
-  rr3_2 = thick_rect(rr3_1,10,sq_side*zoom/1.3,sq_side*zoom/4.8,.000*zoom);
+  rr3_2 = thick_rect(rr3_1,10,sq_side*zoom/1.3,sq_side*zoom/4.8,.001*zoom);
   rr3_2->change_parameters(-6.4,0,-6,0,90,-0);
 
   door = thick_rect(rr3_1,4,6.5*zoom,1.2*zoom,.2*zoom);
   door->change_parameters(1.4,-2.7,2,40,0,-0);
 
   setColor(lavendar);
-  rr4 = thick_rect(rr,10,sq_side*zoom,sq_side*zoom,.000*zoom);
+  rr4 = thick_rect(rr,10,sq_side*zoom,sq_side*zoom,.001*zoom);
   rr4->change_parameters(0,0,0,90,0,0);
 
   setColor(black);
-  rr5 = thick_rect(rr,10,sq_side*zoom,sq_side*zoom,.000*zoom);
+  rr5 = thick_rect(rr,10,sq_side*zoom,sq_side*zoom,.001*zoom);
   rr5->change_parameters(0,0,0,-90,0,0);
 
   setColor(skin);
-  rr6 = thick_rect(rr,10,sq_side*zoom,sq_side*zoom,.000*zoom);
+  rr6 = thick_rect(rr,10,sq_side*zoom,sq_side*zoom,.001*zoom);
   rr6->change_parameters(0,2*sq_side*zoom,0,0,0,0);
 
   setColor(brown);
   table = thick_rect(rr,2,3.5*zoom,1*zoom,0.2*zoom);
-  table->change_parameters(0,3*zoom,-1*zoom,0,0,0);
+  table->change_parameters(0,2.7*zoom,-1*zoom,0,0,0);
 
   setColor(brown);
   leg1 = thick_rect(table,2,.1*zoom,.1*zoom,2.6*zoom);
@@ -265,7 +298,7 @@ void initBuffersGL(void)
   setColor(brown);
   leg4 = thick_rect(table,2,.1*zoom,.1*zoom,2.6*zoom);
   leg4->change_parameters(-3.3*zoom,-2.5*zoom,-.85*zoom,0,0,0);
-//////////chair
+////////chair
   setColor(cement);
   ch_seat = thick_rect(table,6,.6*zoom,.6*zoom,0.3*zoom);
   ch_seat->change_parameters(0,-.7*zoom,-01*zoom,0,0,0);
@@ -289,7 +322,7 @@ void initBuffersGL(void)
   setColor(cement);
   ch_leg4 = thick_rect(ch_seat,7,.1*zoom,.1*zoom,1.7*zoom);
   ch_leg4->change_parameters(-.5*zoom,-1.7*zoom,-.5*zoom,0,0,0);
-////////bed
+// ////////bed
   setColor(bed);
   bed_bottom = thick_rect(rr,4,4.6*zoom,1.5*zoom,1.3*zoom);
   bed_bottom->change_parameters(0,.4*zoom,2.75*zoom,0,0,0);
@@ -353,7 +386,72 @@ void initBuffersGL(void)
   setColor(brown);
   leg44 = thick_rect(stool,2,.1*zoom,.1*zoom,2.6*zoom);
   leg44->change_parameters(-.73*zoom,-2.5*zoom,-.85*zoom,0,0,0);
+//inner box
+  box_bottom = thick_rect(table,7,.8,.8,0.1);
+  box_bottom->change_parameters(0,.201,0,0,0,0);
 
+  box_left = thick_rect(table,7,.8,.8,0.1);
+  box_left->change_parameters(7.2,-7,0,0,0,-90);
+
+  box_right = thick_rect(table,7,.8,.8,0.1);
+  box_right->change_parameters(-7.2,-7,0,0,0,90);
+
+  box_front = thick_rect(table,7,.8,.8,0.1);
+  box_front->change_parameters(0,-7,-7.2,-90,0,0);
+
+  box_back = thick_rect(table,7,.8,.8,0.1);
+  box_back->change_parameters(0,-7,7.2,90,0,0);
+
+
+
+////////////////////////////////////////////////////////////////////////
+      int mult = 8; 
+  // box_top = thick_rect(box_back,10,.8,.8,0.1);
+  // box_top->change_parameters(0,-7.4,7.15,90,0,0);
+  box_top = new_cuboid(box_left,4,.8,.8,0.1,0,0,0);
+  box_top->change_parameters(-.8,-7.2,-1,90,0,90);
+
+  base = forrobo(box_bottom,4,1.3/mult,.8/mult,1.3/mult,0,0,0);
+  base->change_parameters(0,-8,0,0,0,0);
+
+  chest = forrobo(base,3,1.3/mult,1.5/mult,1.3/mult,0,0,0);
+  chest->change_parameters(0,.7/mult,0,0,0,0);
+
+  lshoulder = forrobo(chest,4,.7/mult,.7/mult,.7/mult,0,0,0);
+  lshoulder->change_parameters(-.6/mult,.9/mult,0,0,0,90);
+
+  rshoulder = forrobo(chest,4,.7/mult,.7/mult,.7/mult,0,0,0);
+  rshoulder->change_parameters(.6/mult,.9/mult,0,0,0,-90);
+
+  lhand = forrobo(lshoulder,5,.3/mult,1.5/mult,.3/mult,0,0,0);
+  lhand->change_parameters(-.4/mult,.4/mult,0,0,0,90);
+
+  rhand = forrobo(rshoulder,5,.3/mult,1.5/mult,.3/mult,0,0,0);
+  rhand->change_parameters(.4/mult,.4/mult,0,0,0,-90);
+
+  lforehand = forrobo(lhand,6,.3/mult,1.5/mult,.3/mult,0,0,0);
+  lforehand->change_parameters(-0,1.4/mult,0,0,00,0);
+
+  rforehand = forrobo(rhand,6,.3/mult,1.5/mult,.3/mult,0,0,0);
+  rforehand->change_parameters(0,1.4/mult,0,0,0,0);
+
+  lthigh = forrobo(base,3,.4/mult,1.5/mult,.4/mult,0,0,0);
+  lthigh->change_parameters(-.325/mult,0,0,180,0,0);
+
+  rthigh = forrobo(base,3,.4/mult,1.5/mult,.4/mult,0,0,0);
+  rthigh->change_parameters(.325/mult,0,0,180,0,0);
+
+  lcalf = forrobo(lthigh,4,.4/mult,1.3/mult,.4/mult,0,0,0);
+  lcalf->change_parameters(0,1.3/mult,0,0,0,0);
+
+  rcalf = forrobo(rthigh,4,.4/mult,1.3/mult,.4/mult,0,0,0);
+  rcalf->change_parameters(0,1.3/mult,0,0,0,0);
+
+  neck = forrobo(chest,4,.3/mult,.8/mult,.3/mult,0,0,0);
+  neck->change_parameters(0,1.2/mult,0,0,0,0);
+
+  head = forrobo(neck,8,.7/mult,.7/mult,.7/mult,0,0,0);
+  head->change_parameters(0,.65/mult,0,0,0,0);
 
   root_node = curr_node = rr;
 
@@ -397,6 +495,8 @@ void renderGL(void)
   matrixStack.push_back(view_matrix);
 
   rr->render_tree();
+  //base->render_tree();
+  //box_top->render_tree();
 
 }
 

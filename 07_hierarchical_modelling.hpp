@@ -118,6 +118,35 @@ csX75::HNode* leg44;
 //door
 csX75::HNode* door;
 
+//inner box
+csX75::HNode* box_bottom;
+csX75::HNode* box_left;
+csX75::HNode* box_right;
+csX75::HNode* box_front;
+csX75::HNode* box_back;
+csX75::HNode* box_top;
+
+//robot
+csX75::HNode* head;
+csX75::HNode* chest;
+csX75::HNode* lthigh;
+csX75::HNode* rthigh;
+csX75::HNode* lhand;
+csX75::HNode* rhand;
+csX75::HNode* lcalf;
+csX75::HNode* rcalf;
+csX75::HNode* lfoot;
+csX75::HNode* rfoot;
+csX75::HNode* lforehand;
+csX75::HNode* rforehand;
+csX75::HNode* lwrist;
+csX75::HNode* rwrist;
+csX75::HNode* base;
+csX75::HNode* neck;
+csX75::HNode* lshoulder;
+csX75::HNode* rshoulder;
+//csX75::HNode* head;
+
 
 //-------------------------------------------------------------------------
 

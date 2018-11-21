@@ -14,16 +14,16 @@ namespace csX75
 	HNode::HNode(HNode* a_parent, std::size_t img_c, GLuint num_v, glm::vec4* a_vertices, glm::vec4* a_normals, glm::vec2* a_tex, std::size_t v_size, std::size_t n_size, std::size_t t_size){
 
 		tex0=LoadTexture("images/sheets.bmp",256,256);
-			tex1=LoadTexture("images/wall.bmp",256,256);
-			tex2=LoadTexture("images/wood.bmp",256,256);
-			tex3=LoadTexture("images/lamp.bmp",256,256);
-			tex4=LoadTexture("images/mediumdarkwood.bmp",256,256);
-			tex5=LoadTexture("images/grass1.bmp",256,256);
-			tex6=LoadTexture("images/black.bmp",256,256);
-			tex7=LoadTexture("images/silver.bmp",256,256);
-			tex8=LoadTexture("images/colors.bmp",256,256);
-			tex9=LoadTexture("images/papers.bmp",256,256);
-			tex10=LoadTexture("images/wall2.bmp",256,256);
+		tex1=LoadTexture("images/wall.bmp",256,256);
+		tex2=LoadTexture("images/wood.bmp",256,256);
+		tex3=LoadTexture("images/lamp.bmp",256,256);
+		tex4=LoadTexture("images/mediumdarkwood.bmp",256,256);
+		tex5=LoadTexture("images/grass1.bmp",256,256);
+		tex6=LoadTexture("images/black.bmp",256,256);
+		tex7=LoadTexture("images/silver.bmp",256,256);
+		tex8=LoadTexture("images/colors.bmp",256,256);
+		tex9=LoadTexture("images/papers.bmp",256,256);
+		tex10=LoadTexture("images/wall2.bmp",256,256);
 
 		num_vertices = num_v;
 		vertex_buffer_size = v_size;
