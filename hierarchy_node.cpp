@@ -9,7 +9,7 @@ extern std::vector<glm::mat4> matrixStack;
 namespace csX75
 {	
 	int y=0;
-	GLuint tex0,tex1,tex2,tex3,tex4,tex5,tex6,tex7,tex8,tex9,tex10;
+	GLuint tex0,tex1,tex2,tex3,tex4,tex5,tex6,tex7,tex8,tex9,tex10,tex11;
 
 	HNode::HNode(HNode* a_parent, std::size_t img_c, GLuint num_v, glm::vec4* a_vertices, glm::vec4* a_normals, glm::vec2* a_tex, std::size_t v_size, std::size_t n_size, std::size_t t_size){
 
@@ -24,6 +24,7 @@ namespace csX75
 		tex8=LoadTexture("images/colors.bmp",256,256);
 		tex9=LoadTexture("images/papers.bmp",256,256);
 		tex10=LoadTexture("images/wall2.bmp",256,256);
+		tex11=LoadTexture("images/qq.bmp",256,256);
 
 		num_vertices = num_v;
 		vertex_buffer_size = v_size;
@@ -70,6 +71,7 @@ namespace csX75
 
 		//initial parameters are set to 0;
 
+
 		tx=ty=tz=rx=ry=rz=0;
 
 		update_matrices();
@@ -101,7 +103,10 @@ namespace csX75
 
 		update_matrices();
 	}
-
+	void HNode::inc_y(){
+		ty+=.1;
+		update_matrices();
+	}
 	void HNode::render(){
 		if(img_choice==0){
 			//std::cout<<"here1";
@@ -138,6 +143,9 @@ namespace csX75
 		}else if(img_choice==10){
 			//std::cout<<"here3";
 			glBindTexture(GL_TEXTURE_2D, tex10);
+		}else if(img_choice==11){
+			//std::cout<<"here3";
+			glBindTexture(GL_TEXTURE_2D, tex11);
 		}
   		
 		//matrixStack multiply
@@ -170,7 +178,6 @@ namespace csX75
 		rx+=10;
 		update_matrices();
 	}
-
 
 	void HNode::inc_ry(){
 		ry+=10;

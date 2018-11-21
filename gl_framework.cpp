@@ -1,9 +1,16 @@
 #include "gl_framework.hpp"
 #include "hierarchy_node.hpp"
+#include <fstream>
 
 extern GLfloat c_xpos,c_ypos,c_zpos;
 extern bool enable_perspective;
 extern csX75::HNode* node1, *node2, *node3,*rr ,*curr_node,*box_top, *base,*head,*lhand,*rhand,*chest,*lshoulder,*rshoulder,*lforehand,*rforehand,*lthigh,*rthigh,*lcalf,*rcalf;
+
+extern glm::mat4 view_matrix;
+
+extern void addnode(double x, double y, double z);
+extern void startcam();
+
 namespace csX75
 {
   //! Initialize GL State
@@ -77,8 +84,8 @@ namespace csX75
       curr_node->dec_rz();
     else if (key == GLFW_KEY_PAGE_DOWN && action == GLFW_PRESS)
       curr_node->inc_rz();
-    else if (key == GLFW_KEY_P && action == GLFW_PRESS)
-      enable_perspective = !enable_perspective;   
+    // else if (key == GLFW_KEY_P && action == GLFW_PRESS)
+    //   enable_perspective = !enable_perspective;   
     else if (key == GLFW_KEY_A  && action == GLFW_PRESS)
       c_ypos -= .7;
     else if (key == GLFW_KEY_D  && action == GLFW_PRESS)
@@ -91,7 +98,31 @@ namespace csX75
       c_zpos -= .7;
     else if (key == GLFW_KEY_E  && action == GLFW_PRESS)
       c_zpos += .7;   
+    else if (key == GLFW_KEY_P  && action == GLFW_PRESS){
+      std::cout << lhand->rx << " " << lhand-> ry << " " << lhand->rz << std::endl;
+      std::cout << rhand->rx << " " << rhand-> ry << " " << rhand->rz << std::endl;
+      std::cout << base->rx << " " << base->ry << " " << base->rz << std::endl;
+    }
   }
+
+  void mouse_button_callback(GLFWwindow* window, int button, int action, int mods){
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS){
+       double xpos, ypos;
+       glfwGetCursorPos(window, &xpos, &ypos);
+       xpos = (xpos-500)/500; ypos = -(ypos-500)/500;
+       //cout << xpos << " " << ypos << "\n";
+       glm::mat4 inv = inverse(view_matrix);
+       glm::vec4 point = glm::vec4(xpos,ypos,c_zpos,1);
+       glm::vec4 result = inv * point;
+       addnode(result[0],result[1],c_zpos-1.05);
+    }
+    else if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS){
+       startcam();
+    }
+        
+  }
+
+
 };  
   
 

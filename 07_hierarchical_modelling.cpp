@@ -1,21 +1,6 @@
-/*
-  CSX75 Tutorial 3
-
-  Use the arrow keys and PgUp,PgDn, 
-  keys to make the arms move.
-
-  Use the keys 1,2 and 3 to switch between arms.
-
-  Modified from An Introduction to OpenGL Programming, 
-  Ed Angel and Dave Shreiner, SIGGRAPH 2013
-
-  Written by - 
-               Harshavardhan Kode
-*/
-
-
 #include "07_hierarchical_modelling.hpp"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -207,6 +192,20 @@ csX75::HNode * forrobo(csX75::HNode * parent,size_t img_choice,float x_value,flo
   csX75::HNode * nodenode = new csX75::HNode(parent,img_choice,num_vertices,v_positions,v_normals,tex_coords,sizeof(v_positions),sizeof(v_normals),sizeof(tex_coords));
   //nodenode->change_parameters(xx,yy,zz,0,0,0);
   return nodenode;
+}
+
+int ncp = 0;
+glm::vec3 curve[100];
+
+void addnode(double x, double y, double z){
+    curve[ncp][0] = x;
+    curve[ncp][1] = y;
+    curve[ncp][2] = z;
+
+    ncp++;
+    cout << x << " " << " " << y<< " " << z <<" " << ncp << endl;
+    node3 = new csX75::HNode(rr,0,num_vertices,v_positions,v_normals,tex_coords,sizeof(v_positions),sizeof(v_normals),sizeof(tex_coords));
+    node3->change_parameters(x,y,z,0,0,0);
 }
 
 //-----------------------------------------------------------------
@@ -405,63 +404,196 @@ void initBuffersGL(void)
 
 
 ////////////////////////////////////////////////////////////////////////
-      int mult = 8; 
+      float mult = 3.6; 
   // box_top = thick_rect(box_back,10,.8,.8,0.1);
   // box_top->change_parameters(0,-7.4,7.15,90,0,0);
   box_top = new_cuboid(box_left,4,.8,.8,0.1,0,0,0);
   box_top->change_parameters(-.8,-7.2,-1,90,0,90);
 
-  base = forrobo(box_bottom,4,1.3/mult,.8/mult,1.3/mult,0,0,0);
-  base->change_parameters(0,-8,0,0,0,0);
+  base = forrobo(box_bottom,11,1.3/mult,.8/mult,1.3/mult,0,0,0);
+  base->change_parameters(0,-7,0,0,0,0);
 
-  chest = forrobo(base,3,1.3/mult,1.5/mult,1.3/mult,0,0,0);
+  chest = forrobo(base,11,1.3/mult,1.5/mult,1.3/mult,0,0,0);
   chest->change_parameters(0,.7/mult,0,0,0,0);
 
-  lshoulder = forrobo(chest,4,.7/mult,.7/mult,.7/mult,0,0,0);
+  lshoulder = forrobo(chest,11,.7/mult,.7/mult,.7/mult,0,0,0);
   lshoulder->change_parameters(-.6/mult,.9/mult,0,0,0,90);
 
-  rshoulder = forrobo(chest,4,.7/mult,.7/mult,.7/mult,0,0,0);
+  rshoulder = forrobo(chest,11,.7/mult,.7/mult,.7/mult,0,0,0);
   rshoulder->change_parameters(.6/mult,.9/mult,0,0,0,-90);
 
-  lhand = forrobo(lshoulder,5,.3/mult,1.5/mult,.3/mult,0,0,0);
+  lhand = forrobo(lshoulder,11,.3/mult,1.5/mult,.3/mult,0,0,0);
   lhand->change_parameters(-.4/mult,.4/mult,0,0,0,90);
 
-  rhand = forrobo(rshoulder,5,.3/mult,1.5/mult,.3/mult,0,0,0);
+  rhand = forrobo(rshoulder,11,.3/mult,1.5/mult,.3/mult,0,0,0);
   rhand->change_parameters(.4/mult,.4/mult,0,0,0,-90);
 
-  lforehand = forrobo(lhand,6,.3/mult,1.5/mult,.3/mult,0,0,0);
+  lforehand = forrobo(lhand,11,.3/mult,1.5/mult,.3/mult,0,0,0);
   lforehand->change_parameters(-0,1.4/mult,0,0,00,0);
 
-  rforehand = forrobo(rhand,6,.3/mult,1.5/mult,.3/mult,0,0,0);
+  rforehand = forrobo(rhand,11,.3/mult,1.5/mult,.3/mult,0,0,0);
   rforehand->change_parameters(0,1.4/mult,0,0,0,0);
 
-  lthigh = forrobo(base,3,.4/mult,1.5/mult,.4/mult,0,0,0);
+  lthigh = forrobo(base,11,.4/mult,1.5/mult,.4/mult,0,0,0);
   lthigh->change_parameters(-.325/mult,0,0,180,0,0);
 
-  rthigh = forrobo(base,3,.4/mult,1.5/mult,.4/mult,0,0,0);
+  rthigh = forrobo(base,11,.4/mult,1.5/mult,.4/mult,0,0,0);
   rthigh->change_parameters(.325/mult,0,0,180,0,0);
 
-  lcalf = forrobo(lthigh,4,.4/mult,1.3/mult,.4/mult,0,0,0);
+  lcalf = forrobo(lthigh,11,.4/mult,1.3/mult,.4/mult,0,0,0);
   lcalf->change_parameters(0,1.3/mult,0,0,0,0);
 
-  rcalf = forrobo(rthigh,4,.4/mult,1.3/mult,.4/mult,0,0,0);
+  rcalf = forrobo(rthigh,11,.4/mult,1.3/mult,.4/mult,0,0,0);
   rcalf->change_parameters(0,1.3/mult,0,0,0,0);
 
-  neck = forrobo(chest,4,.3/mult,.8/mult,.3/mult,0,0,0);
+  neck = forrobo(chest,11,.3/mult,.8/mult,.3/mult,0,0,0);
   neck->change_parameters(0,1.2/mult,0,0,0,0);
 
-  head = forrobo(neck,8,.7/mult,.7/mult,.7/mult,0,0,0);
+  head = forrobo(neck,11,.7/mult,.7/mult,.7/mult,0,0,0);
   head->change_parameters(0,.65/mult,0,0,0,0);
 
   root_node = curr_node = rr;
 
+  //for(int i=0;i<6;i++) rr->inc_ry();
+
+
 }
+
+glm::vec3 getBezierPoint( glm::vec3* points, int numPoints, float t ) {
+    glm::vec3* tmp = new glm::vec3[numPoints];
+    memcpy(tmp, points, numPoints * sizeof(glm::vec3));
+    int i = numPoints - 1;
+    while (i > 0) {
+        for (int k = 0; k < i; k++)
+            tmp[k] = tmp[k] + t * ( tmp[k+1] - tmp[k] );
+        i--;
+    }
+    glm::vec3 answer = tmp[0];
+    delete[] tmp;
+    return answer;
+}
+
+// glm::vec3 curve[7] = {
+//   glm::vec3(0.0, 0.0, 12),
+//   glm::vec3(4, 0, 8),
+//   glm::vec3(8, 0.0, 8),
+//   glm::vec3(12, 0.0, 12),
+//   glm::vec3(8, 0, 8),
+//   glm::vec3(8, 0.0, 4),
+//   glm::vec3(12, 0.0, 0.0)
+// };
+
+int startc = 0;
+
+void startcam(void){
+  startc = 1;
+  //css = 1;
+}
+
+int st = 0, st2 = 0, css=0;
+
+int animate = 0;
 
 long long int y = 0;
 
+double angle;
+
+int angles[100][3];
+
+int p, q, r, i=0,iter = 0;
+
+glm::vec3 camera;
+
 void renderGL(void)
 {
-  // int h = ((int)(glfwGetTime()*10000))%10000;
+  if(startc == 0){
+    st = glfwGetTime();
+  }
+  if(animate == 0){
+    st2 = glfwGetTime();
+  }
+  if(animate == 1){
+
+    c_xpos = camera[0];
+  c_ypos = camera[1];
+  c_zpos = camera[2];
+
+    angle = glfwGetTime() - st2;
+    angle = angle / 10;
+
+    std::cout << angle << std::endl;
+    
+    double diff1_x = (1-angle)*angles[iter][0] + angle*angles[iter+3][0];
+    double diff1_y = (1-angle)*angles[iter][1] + angle*angles[iter+3][1];
+    double diff1_z = (1-angle)*angles[iter][2] + angle*angles[iter+3][2];
+    
+    double diff3_x = (1-angle)*angles[iter+1][0] + angle*angles[iter+4][0];
+    double diff3_y = (1-angle)*angles[iter+1][1] + angle*angles[iter+4][1];
+    double diff3_z = (1-angle)*angles[iter+1][2] + angle*angles[iter+4][2];
+
+    double diff2_x = (1-angle)*angles[iter+2][0] + angle*angles[iter+5][0];
+    double diff2_y = (1-angle)*angles[iter+2][1] + angle*angles[iter+5][1];
+    double diff2_z = (1-angle)*angles[iter+2][2] + angle*angles[iter+5][2];
+    
+
+
+    base->rx = diff2_x;
+    base->ry = diff2_y;
+    base->rz = diff2_z;
+    base->update_matrices();
+
+    lhand->rx = diff1_x;
+    lhand->ry = diff1_y;
+    lhand->rz = diff1_z;
+    lhand->update_matrices();
+
+    rhand->rx = diff3_x;
+    rhand->ry = diff3_y;
+    rhand->rz = diff3_z;
+    rhand->update_matrices();
+
+    iter+=3;
+
+    //base->inc_ry();
+    
+
+
+    std::cout<<"interpolate " << base->ry << std::endl;
+    
+    if(angle > 0.99) { animate = 0;
+      // if( (i-iter) == 3 )
+      // animate = 0;
+      // else{
+      //   st2 = glfwGetTime();
+      // }
+    }
+  }
+  if(startc == 1){
+  //cout << glfwGetTime() << '\n';
+  
+  angle = glfwGetTime()-st;
+
+  angle = angle / 10;
+
+  camera = getBezierPoint(curve,ncp,angle);
+
+  y++;
+
+  c_xpos = camera[0];
+  c_ypos = camera[1];
+  c_zpos = camera[2];
+
+
+  if(y < 18) box_bottom->inc_y();
+  if(y < 28) box_top->inc_rz();
+  if(y==29) curr_node=base;
+
+
+  if(angle > 0.99) {
+    startc = 0;
+    animate = 1;
+  }
+  }  // int h = ((int)(glfwGetTime()*10000))%10000;
   // // cout << glfwGetTime() << '\n';
   // cout << h << endl;
   // if( h > y){
@@ -481,7 +613,12 @@ void renderGL(void)
   glm::vec4 c_pos = glm::vec4(c_xpos,c_ypos,c_zpos, 1.0)*c_rotation_matrix;
   glm::vec4 c_up = glm::vec4(c_up_x,c_up_y,c_up_z, 1.0)*c_rotation_matrix;
   //Creating the lookat matrix
-  lookat_matrix = glm::lookAt(glm::vec3(c_pos),glm::vec3(0.0),glm::vec3(c_up));
+  if(startc == 1 || angle > 0.99 || animate == 1){
+    lookat_matrix = glm::lookAt(glm::vec3(c_pos),glm::vec3(0,-3,-1),glm::vec3(c_up));
+  }
+  else{
+    lookat_matrix = glm::lookAt(glm::vec3(c_pos),glm::vec3(0,0,-100),glm::vec3(c_up));
+  }
 
   //creating the projection matrix
   if(enable_perspective)
@@ -503,6 +640,15 @@ void renderGL(void)
 int main(int argc, char** argv)
 {
   //! The pointer to the GLFW window
+  ifstream read("keyframes.txt");
+  while(read >>p>>q>>r){
+    angles[i][0] = p;
+    angles[i][1] = q;
+    angles[i][2] = r;
+    i++;
+    std::cout<<p<<" "<<q<<" "<<r<<" "<<std::endl;
+  }
+
   GLFWwindow* window;
 
   //! Setting up the GLFW Error callback
@@ -550,6 +696,10 @@ int main(int argc, char** argv)
   //Keyboard Callback
   glfwSetKeyCallback(window, csX75::key_callback);
   //Framebuffer resize callback
+
+  glfwSetMouseButtonCallback(window, csX75::mouse_button_callback);
+  glfwSetCursorPosCallback(window, NULL);
+
   glfwSetFramebufferSizeCallback(window, csX75::framebuffer_size_callback);
 
   // Ensure we can capture the escape key being pressed below
